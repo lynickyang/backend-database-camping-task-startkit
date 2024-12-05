@@ -22,7 +22,7 @@ insert into "USER" (name, email, role) values
 ('好野人', 'richman@hexschooltest.io', 'USER'),
 ('Q太郎', 'starplatinum@hexschooltest.io', 'USER'),
 ('透明人', 'opcatiy0@hexschooltest.io', 'USER');
-SELECT * FROM "USER";
+
 
 -- 1-2 修改：用 Email 找到 李燕容、肌肉棒子、Q太郎，如果他的 Role 為 USER 將他的 Role 改為 COACH
 UPDATE "USER"
@@ -61,7 +61,7 @@ LIMIT 3;
 insert into "CREDIT_PACKAGE" (name, credit_amount, price) values
 ('7 堂組合包方案', 7, 1400),
 ('14 堂組合包方案', 14, 2520),
-('21堂組合包方案', 21, 4800);
+('21 堂組合包方案', 21, 4800);
 
 
 -- 2-2. 新增：在 `CREDIT_PURCHASE` 資料表，新增三筆資料：（請使用 name 欄位做子查詢）
@@ -74,17 +74,19 @@ insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, pr
   (select credit_amount from "CREDIT_PACKAGE" where name = '14 堂組合包方案'),
   (select price from "CREDIT_PACKAGE" where name = '14 堂組合包方案'));
 
-  insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid) values
+insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid) values
 ((select id from "USER" where email = 'wXlTq@hexschooltest.io'),
   (select id from "CREDIT_PACKAGE" where name = '21 堂組合包方案'),
   (select credit_amount from "CREDIT_PACKAGE" where name = '21 堂組合包方案'),
   (select price from "CREDIT_PACKAGE" where name = '21 堂組合包方案'));
 
-  insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid) values
+
+insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid) values
 ((select id from "USER" where email = 'richman@hexschooltest.io'),
   (select id from "CREDIT_PACKAGE" where name = '14 堂組合包方案'),
   (select credit_amount from "CREDIT_PACKAGE" where name = '14 堂組合包方案'),
-  (select price from "CREDIT_PACKAGE" where name = '14 堂組合包方案'));
+  (select price from "CREDIT_PACKAGE" where name = '14 堂組合包方案')
+  );
 
 -- ████████  █████   █    ████   
 --   █ █   ██    █  █         ██ 
